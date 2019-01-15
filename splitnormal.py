@@ -9,7 +9,7 @@ def splitNormal(x,mu,sigma,cigma):
 def fit(xs):
     xs=np.sort(xs)
     N=xs.size
-    Delta=int(N*scipy.special.erf(1/np.sqrt(2))) # this erf could be hardcoded = int(N*0.6826894921370859)
+    Delta=int(N*0.6826894921370859) #hardcoded version of erf(1/sqrt(2))
     
     js=np.arange(0,N-Delta-1)
     w_js=xs[js+Delta]-xs[js]
