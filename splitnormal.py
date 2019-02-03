@@ -48,4 +48,7 @@ def fit(xs):
     sigma=mu-x_J
     cigma=w_J-sigma
 
+    sigma=sigma+1e-6*w_J
+    cigma=cigma+1e-6*w_J
+
     return mu,sigma,cigma
