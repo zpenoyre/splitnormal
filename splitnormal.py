@@ -41,14 +41,11 @@ def fit(xs):
     w_J=w_js[J]
     x_J=xs[J]
     
-    ks=np.arange(J,J+Delta-1)
-    theta_ks=(ks/N) - ((xs[ks]-xs[J])/w_J)
-    K=np.argmin(np.abs(theta_ks))
-    mu=xs[ks[K]]
+    ks=np.arange(J+1,J+Delta-1)
+    theta_ks=(ks/N) - ((xs[ks]-x_J)/w_J)
+    K=ks[np.argmin(np.abs(theta_ks))]
+    mu=xs[K]
     sigma=mu-x_J
     cigma=w_J-sigma
-
-    sigma=sigma+1e-6*w_J
-    cigma=cigma+1e-6*w_J
 
     return mu,sigma,cigma
