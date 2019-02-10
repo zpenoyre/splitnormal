@@ -13,9 +13,9 @@ def cdf(x,mu,sigma,cigma):
     epsilon=cigma/sigma
     alphas=sigma*np.ones_like(x)
     alphas[x>mu]=cigma
-    epsFactor=np.ones_like(x)
-    epsFactor[x>mu]=epsilon
-    return (1/(1+epsilon))*(1 + epsFactor*scipy.special((x-mu) / sqrt(2 * alphas**2)) )
+    betas=np.ones_like(x)
+    betas[x>mu]=epsilon
+    return (1/(1+epsilon))*(1 + betas*scipy.special((x-mu) / sqrt(2 * alphas**2)) )
     
 def inverse(F,mu,sigma,cigma):
     epsilon=cigma/sigma
@@ -41,7 +41,7 @@ def fit(xs):
     w_J=w_js[J]
     x_J=xs[J]
     
-    ks=np.arange(J+1,J+Delta-1)
+    ks=np.arange(J+1,J+Delta-2)
     theta_ks=(ks/N) - ((xs[ks]-x_J)/w_J)
     K=ks[np.argmin(np.abs(theta_ks))]
     mu=xs[K]
